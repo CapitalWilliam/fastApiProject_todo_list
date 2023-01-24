@@ -6,7 +6,8 @@ app = FastAPI()
 
 
 @app.get("/items/{item_id}")
-async def read_item(item_id: str, q: Optional[str] = None):
-    if q:
-        return {"item_id": item_id, "q": q}
-    return {"item_id": item_id}
+async def read_user_item(
+    item_id: str, needy: str, skip: int = 0, limit: Optional[int] = None
+):
+    item = {"item_id": item_id, "needy": needy, "skip": skip, "limit": limit}
+    return item
